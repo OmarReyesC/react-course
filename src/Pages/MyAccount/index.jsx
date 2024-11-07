@@ -1,14 +1,14 @@
-
+import Layout from "../../Components/Layout"
 
 function MyAccount() {
 
     return (
     
-        <div className='bg-green-400'>
-          MyAccount.
-        </div>
+      <Layout>
+        MyAccount
+      </Layout>
     
-    )
+    );
   }
   
   export default MyAccount

@@ -1,13 +1,14 @@
-
+import Layout from "../../Components/Layout"
 
 function Home() {
 
     return (
-    <>
-      Home
-    </>
     
-    )
+      <Layout>
+        Home
+      </Layout>
+    
+    );
   }
   
   export default Home
