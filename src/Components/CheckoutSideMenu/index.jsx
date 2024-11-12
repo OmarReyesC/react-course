@@ -8,7 +8,7 @@ const CheckoutSideMenu = () => {
 
     return (
         <aside 
-            className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed right-0 bg-white border border-black rounded-lg overflow-y-auto`}>
+            className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed right-0 bg-white border border-black rounded-lg`}>
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl'>My Order</h2>
                 <div
@@ -19,7 +19,7 @@ const CheckoutSideMenu = () => {
                     </svg>
                 </div>
             </div>
-            <div className='px-6'>
+            <div className='px-6 overflow-y-scroll'>
                 {
                     context.cartProducts.map(product => (
                         <OrderCard 

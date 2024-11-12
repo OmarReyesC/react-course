@@ -15,7 +15,31 @@ const Card = ({ data }) => {  //Deestructurado para no tener que hacer data.data
         context.setCartProducts([...context.cartProducts, productData]);
         context.openCheckoutSideMenu();
         context.closeProductDetail();
-        console.log('CART:', context.cartProducts);
+    };
+
+    const renderIcon = (thisId) => {
+        const isInCart = context.cartProducts.filter(product => product.id === thisId).length > 0
+
+        if (isInCart) {
+            return (
+                <div 
+                    className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1" 
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" className="text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                        </svg>
+                    </div>
+            )
+        } else {
+            return (
+                <div 
+                    className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1" 
+                    onClick={(event) => addProductsToCart(event, data)} >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                    </div>
+            )}
     };
 
     return (
@@ -25,13 +49,7 @@ const Card = ({ data }) => {  //Deestructurado para no tener que hacer data.data
             <figure className="relative mb-4 w-full h-4/5">
                 <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">{data.category}</span>
                 <img className="w-full h-full object-cover rounded-lg" src={data.image} alt={data.title} />
-                <div 
-                className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1" 
-                onClick={(event) => addProductsToCart(event, data)} >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                </div>
+                {renderIcon(data.id)}
             </figure>
             <p className="flex justify-between">
                 <span className="text-sm font-light">{data.title}</span>
