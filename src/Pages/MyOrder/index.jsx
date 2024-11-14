@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext);
+  const currentPath = window.location.pathname;
+  let index = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  if (index === 'latest') index = context.order?.length - 1;
+  console.log(index)
 
     return (
       <Layout>
@@ -15,11 +19,11 @@ function MyOrder() {
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
             </svg>
           </Link>
-          <h1>MyOrder</h1>
+          <h1>My Order</h1>
         </div>
         <div className='flex flex-col w-80'>
             {
-              context.order?.slice(-1)[0].products.map(product => (  // <= Si hay 'order', muestrame el último elemento.
+              context.order?.[index]?.products.map(product => ( 
                 <OrderCard 
                     key={product.id} 
                     id={product.id} 
