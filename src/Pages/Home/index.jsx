@@ -6,21 +6,15 @@ import ProductDetail from "../../Components/ProductDetail";
 
 function Home() {
   const context = useContext(ShoppingCartContext);
-  const renderView = () => {
-    if (context.searchByTitle?.length > 0) {
-      if (context.filteredItems?.length > 0) {
+  const renderView = () => { 
+    if (context.filteredItems?.length > 0) {
         return (
           context.filteredItems?.map((item) => (
             <Card key={item.id} data={item} />
-        ))
-      )} else {
+      ))
+    )} else {
         return <h2>No matches found</h2>
       }
-    } else {
-       return context.items?.map((item) => (  //<= Estos paréntesis pueden también sustituir a la palabra reservada return
-        <Card key={item.id} data={item} />
-      ))
-    }
   };
 
     return (

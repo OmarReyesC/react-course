@@ -28,7 +28,6 @@ export const ShoppingCartContextProvider = ({children}) => {
     //Get items
     const [items, setItems] = useState(undefined);
     const [filteredItems, setFilteredItems] = useState(undefined);
-    console.log('filteredItems', filteredItems)
 
     useEffect(() => {
       fetch('https://fakestoreapi.com/products')
